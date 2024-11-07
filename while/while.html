@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>While Loop</title>
+</head>
+
+<body>
+  <h1>Sum using For Loop</h1>
+  <p id="Sum"></p>
+
+  <h1>Total using For Loop</h1>
+  <p id="total"></p>
+
+  <h1>Total using While Loop</h1>
+  <p id="total-while"></p>
+
+  <script>
+    let sum = 0;
+    let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    for (let i = 0; i < numbers.length; i++) {
+      sum += numbers[i];
+    }
+
+    document
+      .getElementById("Sum")
+      .innerText = `The sum is ${sum}`;
+  </script>
+
+  <script>
+    let total = 0;
+
+    // for (let i = 0; i < 2; i++) {
+    //   const num = parseInt(prompt("Enter a number For: "));
+
+    //   if (num < 0) {
+    //     break;
+    //   }
+    //   total += num;
+    // }
+    document
+      .getElementById("total")
+      .innerText = `The total is ${total}`;
+  </script>
+
+  <script>
+    let totalWhile = 0;
+
+    // let num = 0;
+    // while (num >= 0) {
+    //   totalWhile += num;
+    //   num = parseInt(prompt("Enter a number While: "));
+    // }
+
+    document
+      .getElementById("total-while")
+      .innerText = `The total is ${total}`;
+  </script>
+
+  <script>
+    
+  </script>
+</body>
+
+</html>

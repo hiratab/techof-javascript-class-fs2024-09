@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Array</title>
+</head>
+
+<body>
+  <h1>Array</h1>
+
+  <script>
+    const number = 1;
+    const outroArray = [1, 2, 3, 4, 5];
+    const array = [
+      "Oi",
+      "Tudo bem?",
+      1,
+      2,
+      3,
+      number,
+      outroArray,
+      [6, 7, 8, 9, 10],
+      function () { console.log("Olá!") }
+    ];
+
+    for (let i = 0; i < array.length; i++) {
+      console.log(array[i]);
+    }
+
+
+  </script>
+
+  <script>
+    const fns = [
+      function () { console.log("Olá!") },
+      function () { console.log("Tudo bem?") },
+      function () { console.log("Até mais!") },
+    ];
+
+    fns[3] = function () { console.log("Olá, tudo bem?") };
+    console.log(fns);
+
+    for (let i = 0; i < fns.length; i++) {
+      fns[i]();
+    }
+  </script>
+
+  <script>
+    const numbers = [];
+
+    for (let i = 0; i < 10; i++) {
+      numbers.push(i);
+    }
+    numbers.push(10);
+
+    console.log('numbers:', numbers);
+
+    while (numbers.length > 0) {
+      console.log('number ', numbers.shift());
+    }
+    console.log('numbers', numbers);
+
+  </script>
+
+  <script>
+    const texts = ['Oi', 'Tudo bem?', 'Até mais!'];
+    console.log('texts:', texts.join(' bruno '));
+
+    const text = [];
+    const s = 'Oi, tudo bem? Algum texto para colocar no array';
+    for (let i = 0; i < s.length; i++) {
+      text.push(s[i]);
+    }
+    console.log('text:', text, text.reverse().join(''));
+  </script>
+
+
+  <script>
+    const smallNumbers = [1, 2, 3, 4, 5];
+    const largeNumbers = [6, 7, 8, 9, 10, 20, 30, 40, 11, 12, 13, 100];
+    const smallAndLargeNumbers = largeNumbers.concat(smallNumbers);
+    smallAndLargeNumbers.sort(
+      function (a, b) {
+        return b - a;
+      }
+    );
+    // const smallAndLargeNumbers = smallNumbers.concat(largeNumbers);
+    console.log('smallAndLargeNumbers:', smallAndLargeNumbers);
+
+    smallAndLargeNumbers.sort(
+      function (a, b) {
+        return a - b;
+      }
+    );
+    console.log('smallAndLargeNumbers:', smallAndLargeNumbers);
+
+    console.log('Index Of 100', smallAndLargeNumbers.indexOf(100));
+    console.log('Index Of 1', smallAndLargeNumbers.indexOf(1));
+    console.log('Index Of 12356788', smallAndLargeNumbers.indexOf(12356788));
+
+    console.log('Slice', 
+    smallAndLargeNumbers.slice(
+      smallAndLargeNumbers.indexOf(10), 
+      smallAndLargeNumbers.length
+    ), 
+    smallAndLargeNumbers
+  );
+  </script>
+
+</body>
+
+</html>

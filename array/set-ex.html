@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Set</title>
+</head>
+
+<body>
+  <p id="all"></p>
+  <p id="unique"></p>
+  <input type="text" id="number">
+  <button onclick="addNumber()">Add</button>
+  <script>
+    const numbers = new Array();
+
+    function addNumber() {
+      const input = document.getElementById('number');
+
+      const number = parseInt(input.value);
+      numbers.push(number);
+
+      document.getElementById('all').innerText = 'All: ' + numbers;
+      document.getElementById('unique').innerText
+        = 'Unique: ' + Array.from(new Set(numbers));
+
+      input.value = '';
+    }
+
+  </script>
+</body>
+
+</html>

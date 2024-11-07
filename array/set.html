@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set</title>
+</head>
+<body>
+  <script>
+    let set = new Set();
+    set.add(1);
+    set.add(1);
+    set.add(1);
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    set.add(4);
+
+    const array = new Array();
+    array.push(1);
+    array.push(1);
+    array.push(1);
+    array.push(1);
+    array.push(2);
+    array.push(3);
+    array.push(4);
+
+    console.log('set:', set, 'array:', array);
+
+    for (let i = 0 ; i < array.length ; i++) {
+      console.log('array:', array[i]);
+    }
+
+    for (let item of set) {
+      console.log('set:', item);
+    }
+
+    set.clear();
+    console.log('set:', set);
+
+    set = new Set(array);
+    console.log('set:', set);
+
+    set.delete(1);
+    set.delete(2);
+    console.log('set:', set);
+  </script>
+</body>
+</html>

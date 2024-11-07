@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Count</title>
+</head>
+<body>
+    <h1>Array Count</h1>
+    <p id="count"></p>
+    <input type="text" id="number"/>
+    <button onclick="addNumber()">Add</button>
+
+    <script>
+      const numbers = new Array();
+      
+      function addNumber() {
+        const number = document.getElementById('number').value;
+
+        numbers.push(parseInt(number));
+        document.getElementById('number').value = '';
+
+        const countElement = document.getElementById('count');
+        let count = 0;
+        for (let i = 0; i < numbers.length; i++)  {
+          if ( numbers[i] % 2 === 0 ) {
+            count += 1;
+          }
+        }
+
+        countElement.innerText = `Count: ${count}`;
+      }
+    </script>
+</body>
+</html>

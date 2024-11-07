@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DIY 1</title>
+</head>
+
+<body>
+  <h1>DIY 1</h1>
+  <p id="max"></p>
+  <button onclick="calcMaxFor()">Max</button>
+
+  <script>
+    function calcMax() {
+      const numbers = new Array();
+
+      for (let i = 0; i < 3; i++) {
+        const number = prompt('Insira um numero');
+        numbers.push(Number(number));
+      }
+
+      console.log('numbers', numbers);
+      numbers.sort(function (a, b) {
+        return a, b;
+      })
+      console.log('sorted numbers', numbers)
+
+      document.getElementById('max').innerText = 'O max é ' + numbers.pop()
+    }
+
+    function calcMaxFor() {
+      const numbers = new Array();
+
+      for (let i = 0; i < 3; i++) {
+        const number = prompt('Insira um numero');
+        numbers.push(Number(number));
+      }
+
+      let max = numbers[0];
+      for (let i = 0; i < numbers.length ; i++) {
+        if (numbers[i] > max) {
+          max = numbers[i]
+        }
+      }
+
+      document.getElementById('max').innerText = 'O max é ' + max;
+    }
+  </script>
+</body>
+
+</html>

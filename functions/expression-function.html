@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Expression Functions</title>
+</head>
+
+<body>
+  <h1>Expression Functions</h1>
+
+  <script>
+    const double = function(number) {
+      console.log('Double of ' + number + ' is ' + number * 2);
+    }
+
+    const square = function(number) {
+      return number * number
+    }
+
+    const numbers = [10, 20, 30, 40, 50, 60];
+
+    console.log('========== double ==========')
+    for (let i = 0; i < numbers.length; i++) {
+      const dobro = double(numbers[i]);
+      console.log('dobro', dobro);
+    }
+
+    console.log('========== square ==========')
+    for (let i = 0; i < numbers.length; i++) {
+      const quadrado = square(numbers[i]);
+      console.log('quadrado', quadrado);
+    }
+  </script>
+</body>
+
+</html>

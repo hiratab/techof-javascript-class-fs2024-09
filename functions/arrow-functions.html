@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Arrow Functions</title>
+</head>
+
+<body>
+  <h1>Arrow Functions</h1>
+  <p id="formatado"></p>
+  <p id="dobro"></p>
+  <input type="text" id="number" />
+  <button onclick="handleFormatNumber()">Formatar numero</button>
+
+  <script>
+    const getNumberFromInput = (elementId) => {
+      const number = document.getElementById(elementId).value;
+      document.getElementById(elementId).value = '';
+
+      return Number(number);
+    }
+
+    const printFormattedNumber = (
+      elementId,
+      formattedNumber,
+      message = 'O numero formatado é '
+    ) => {
+      document.getElementById(elementId).innerText
+        = message + formattedNumber;
+    }
+
+    const formatNumber = (number) => {
+      return Number(number).toFixed(2);
+    }
+
+    const double = (number) => {
+      return number * 2;
+    }
+
+    const fixedValue = ((a, b) => a * b)(10, 20)
+    console.log('fixedValue', fixedValue)
+
+    const handleFormatNumber = () => {
+      const number = getNumberFromInput('number');
+      const formattedNumber = formatNumber(number);
+      printFormattedNumber('formatado', formattedNumber);
+
+      const doubled = double(number);
+      printFormattedNumber('dobro', doubled, 'O dobro é ');
+    }
+  </script>
+</body>
+
+</html>

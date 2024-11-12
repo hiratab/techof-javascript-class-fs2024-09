@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Every</title>
+</head>
+
+<body>
+  <h1>Every</h1>
+  <p id="result"></p>
+  <button onclick="every()">Every</button>
+
+  <script>
+    const every = () => {
+      const cities = ['Lisboa', 'Setubal', 'Porto', 'Coimbra', 'Setubal'];
+
+      const result = cities.every((city) => {
+        // return city[0] === 'S' || city[0] === 'L' || city[0] === 'P' || city[0] === 'C';
+        return city[0] === 'S';
+      })
+
+      document.getElementById('result').innerText = "Result: " + result;
+    }
+  </script>
+</body>
+
+</html>

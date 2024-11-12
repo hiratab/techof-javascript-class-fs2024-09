@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Some</title>
+</head>
+
+<body>
+  <h1>Some</h1>
+  <p id="result"></p>
+  <button onclick="some()">Some</button>
+
+  <script>
+    const some = () => {
+      const cities = ['Lisboa', 'Setubal', 'Porto', 'Coimbra', 'Setubal'];
+
+      const result = cities.some((city) => {
+        return city === 'Setubal';
+      })
+
+      document.getElementById('result').innerText = "Result: " + result;
+    }
+  </script>
+</body>
+
+</html>

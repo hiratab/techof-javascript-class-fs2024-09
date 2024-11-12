@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>DIY</h1>
+  <p id="result"></p>
+  <button onclick="calculate()">Calcular</button>
+
+  <script>
+    const multiply = (number) => {
+      return number * number;
+    }
+
+    const printToConsole = (element) => {
+      console.log(element);
+      return element;
+    }
+
+    const isLessThan10 = (number) => {
+      return number < 10
+    }
+
+    const isLessThan5 = (number) => {
+      return number < 5
+    }
+
+    const calculate = () => {
+      const numbers = [1, 2, 3, 4, 5];
+      let result = "";
+
+      numbers.forEach((number, index) => {
+        result = result + `${number} x ${number} = ${number * number}\n`
+      })
+      document.getElementById('result').innerText = result;
+
+      const numbersMultiplied =
+        numbers
+          .map(multiply)
+          .filter(isLessThan10)
+          .filter(isLessThan5)
+          .map(printToConsole);
+
+      console.log(numbersMultiplied);
+
+      let sum = 0;
+      numbers.forEach(number => {
+        sum = sum + number;
+      })
+      // console.log('sum', sum)
+
+      const sumReducer = numbers.reduce(
+        (previousValue, currentValue) => {
+          return previousValue + currentValue;
+        }
+      );
+
+      // console.log('sumReducer', sumReducer)
+
+      const getMax = (a, b) => Math.max(a, b);
+      const maxValue = [13, 14, 15, 1, 2, 3, 4, 9, 10, 5, 6, 7, 8,  11, 12, ]
+        .reduce(getMax);
+      console.log('maxValue', maxValue)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>For Each</title>
+</head>
+
+<body>
+  <h1>For Each</h1>
+  <p id="name"></p>
+  <p id="last-name"></p>
+  <p id="email"></p>
+  <p id="age"></p>
+  <input type="text" id="name-input" />
+  <br>
+  <input type="text" id="last-name-input" />
+  <br>
+  <input type="text" id="email-input" />
+  <br>
+  <input type="text" id="age-input" />
+  <br>
+  <button onclick="printDetails()">Print</button>
+  <button onclick="copyArray()">Copy Array</button>
+
+  <script>
+    const getValueFromInput = (inputId) => {
+      const value = document.getElementById(inputId).value;
+
+      const pId = inputId.split('-input')[0];
+      document.getElementById(pId)
+        .innerText = `${pId}: ${value}`;
+    }
+
+    const printDetails = () => {
+      const inputs = ["name-input", "last-name-input",
+        "email-input", "age-input"];
+
+      inputs.forEach(getValueFromInput);
+    };
+
+    const copyArray = () => {
+      const items = ['item1', 'item2', 'item3', 'item4'];
+      const destinationItems = [];
+
+      items.forEach((item, index, array) => {
+        console.log('item', item, 'index', index, 'array', array)
+        destinationItems.push(item);
+      });
+      console.log(destinationItems)
+
+    }
+  </script>
+</body>
+
+</html>

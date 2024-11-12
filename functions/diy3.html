@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DIY 3</title>
+</head>
+
+<body>
+  <h1>DIY 3</h1>
+  <p id="max"></p>
+  <button onclick="calcMax()">Max</button>
+
+  <script>
+    const calcMax = () => {
+      let max = Infinity * -1;
+
+      for (let i = 0; i < 3 ; i++) {
+        const number = Number(prompt('Insira um numero'));
+
+        if (number > max) {
+          max = number;
+        }
+      }
+
+      document.getElementById('max').innerText = 'O max é ' + max;
+    }
+  </script>
+</body>
+
+</html>

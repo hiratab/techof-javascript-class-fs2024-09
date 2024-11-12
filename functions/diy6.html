@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DIY 6</title>
+</head>
+
+<body>
+  <h1>DIY 6</h1>
+  <p id="max"></p>
+  <!-- <input type="text" id="numbers" /> -->
+  <button onclick="calcMax([1, 6, 2, 9])">Max</button>
+
+  <script>
+    const calcMax = (numbers) => {
+      const max = numbers.sort((a, b) => a - b).pop();
+
+      document.getElementById('max').innerText = 'O max é ' + max;
+    }
+  </script>
+</body>
+
+</html>

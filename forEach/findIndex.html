@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Index</title>
+</head>
+
+<body>
+  <h1>Find Index</h1>
+  <p id="index"></p>
+  <button onclick="findIndex()">Find Index</button>
+
+  <script>
+    const findIndex = () => {
+      const cities = ['Lisboa', 'Setubal', 'Porto', 'Coimbra', 'Setubal'];
+
+      const index = cities
+        .filter((city) => city[0] === 'S')
+        .map((city) => {
+          console.log(city);
+          return city;
+        })
+        .findIndex((city) => {
+          return city === 'Setubal';
+        });
+      console.log('index', index);
+
+      document.getElementById('index').innerText = "Index: " + index + ' mais coisa';
+    }
+  </script>
+</body>
+
+</html>

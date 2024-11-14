@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object</title>
+</head>
+
+<body>
+  <h1>Objects</h1>
+  <p id="name"></p>
+  <p id="new-object"></p>
+  <button onclick="getName()">Name</button>
+  <button onclick="createObject()">Create Object</button>
+  <button onclick="createNewObject()">Create New Object</button>
+  <button onclick="construct()">Constructor</button>
+
+  <script>
+    const x = 0 || 'Text' || true;
+    const list = [1, 2, 'Text', false, () => console.log('Hello')];
+    const obj = {
+      key: 1,
+      fn: () => console.log('Hello')
+    };
+
+    const person = {
+      firstName: 'Bruno',
+      lastName: 'Hirata',
+      123: 123,
+      'key com espaco': 'value da key com espaco',
+      getFullName: function () {
+        return this.firstName + ' ' + this.lastName
+      },
+    };
+
+    const getName = () => {
+      const fullName = person.getFullName();
+      const keys = ['firstName', 'lastName', '123', 'key com espaco', 'getFullName'];
+      keys.forEach((key) => console.log('key', key, person[key]));
+
+      document.getElementById('name').innerText = person['getFullName']()
+    }
+
+    function createObject() {
+      const player = {};
+      player.firstName = 'Bruno';
+      player.lastName = 'Hirata';
+      player[123] = 123;
+      player['key com espaco'] = 'value da key com espaco';
+      player.getFullName = function () {
+        return this.firstName + ' ' + this.lastName
+      }
+      player.toString = function () {
+        return 'Meu metodo toString'
+      }
+
+      document.getElementById('new-object').innerText = player.getFullName();
+      console.log(player)
+      console.log(player.toString())
+    }
+
+    function createNewObject() {
+      const firstName = 'Bruno';
+      const lastName = 'Hirata';
+      const getFullName = function () {
+        return this.firstName + ' ' + this.lastName
+      };
+      const game = {
+        name: 'Uno',
+        type: 'Card game'
+      };
+      const player = {
+        firstName: firstName,
+        lastName,
+        getFullName,
+        game
+      };
+      console.log(player)
+
+      console.log(player.game.name)
+    }
+
+    function construct() {
+      class Game {
+        constructor(name, type) {
+          this.name = name;
+          this.type = type;
+        }
+      }
+      const game = new Game('Uno', 'Card game');
+      console.log(game)
+
+      function Player(firstName, lastName, game) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.game = game;
+        this.getFullName = function () {
+          return this.firstName + ' ' + this.lastName
+        };
+      }
+
+      const player = new Player('Bruno', 'Hirata', game);
+      console.log(player.firstName);
+    }
+  </script>
+</body>
+
+</html>

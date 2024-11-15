@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spread</title>
+</head>
+
+<body>
+  <script>
+    function copyArray() {
+      const arr = [1, 2, 3];
+      const arrCopy = [...arr];
+
+      arr.push(4);
+      arr[0] = 5;
+      console.log('arr', arr);
+      console.log('arrCopy', arrCopy);
+    }
+
+    function copyArrayWithAdditionalValues() {
+      const arr = [1, 2, 3];
+      const arrCopy = [10, 20, ...arr, 30, 40];
+
+      console.log('arr', arr);
+      console.log('arrCopy', arrCopy);
+    }
+
+    function mergeArray() {
+      const arr = [1, 2, 3];
+      const arr1 = [10, 20, 30];
+
+      const mergedArray = [...arr, ...arr1];
+
+      console.log('arr', arr);
+      console.log('arr1', arr1);
+      console.log('mergedArray', mergedArray);
+    }
+
+    function spreadInFunctionParameter() {
+      function calculateDouble(number) {
+        return number * 2;
+      }
+
+      function calculateDoubleFromArray(...numbers) {
+        console.log('calculateDoubleFromArray numbers', numbers)
+        return numbers.map(calculateDouble);
+      }
+
+      const numbers = [1, 2, 3, 4, 5, 6, 10];
+      const doubled = calculateDoubleFromArray(...numbers)
+      console.log('doubled', doubled);
+
+
+      function calculateMax(n1, n2, n3, ...rest) {
+        const numbers = [...rest, n3, n2, n1,];
+        console.log('calculateMax numbers', numbers)
+
+        return numbers
+          .sort((a, b) => a - b)
+          .pop();
+      }
+      const max = calculateMax(...numbers);
+      console.log('max', max);
+    }
+
+
+    function copyObject() {
+      const obj1 = {
+        a: 1,
+        b: 2,
+      }
+      const obj2 = {
+        ...obj1
+      };
+
+      obj1.a = 10;
+
+      console.log('obj1', obj1);
+      console.log('obj2', obj2);
+    }
+
+    function copyObjectAddProperties() {
+      const obj1 = {
+        a: 1,
+        b: 2,
+      }
+      const obj2 = {
+        ...obj1,
+        c: 3,
+        d: 4,
+      };
+      const obj3 = {
+        c: 3,
+        d: 4,
+        ...obj1,
+      }
+
+      console.log('obj1', obj1);
+      console.log('obj2', obj2);
+      console.log('obj3', obj3);
+    }
+
+    function mergeObjects() {
+      const obj1 = {
+        a: 1,
+        b: 2,
+      }
+      const obj2 = {
+        a: 10,
+        b: 20,
+        c: 3,
+        d: 4,
+      };
+      const obj3 = {
+        ...obj1,
+        ...obj2,
+        c: 30,
+        d: 40,
+      }
+
+      console.log('obj1', obj1);
+      console.log('obj2', obj2);
+      console.log('obj3', obj3);
+    }
+    mergeObjects()
+  </script>
+</body>
+
+</html>

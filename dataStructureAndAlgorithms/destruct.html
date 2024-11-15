@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destruct</title>
+</head>
+
+<body>
+  <h1>Destruct</h1>
+
+  <script>
+    function destructFirstNumber() {
+      const numbers = [1, 2, 3, 4, 5];
+
+      const firstNumber = numbers[0];
+      let [firstNumber2, secondNumber, thirdNumber] = numbers;
+      console.log('firstNumber', firstNumber, 'firstNumber1', firstNumber1, 'firstNumber2', firstNumber2, numbers);
+    }
+
+    function destructFirstNumberVsShift() {
+      const numbers = [1, 2, 3, 4, 5];
+
+      const firstNumber = numbers[0];
+      let [firstNumber1] = numbers;
+
+      console.log('firstNumber', firstNumber, 'firstNumber1', firstNumber1, 'numbers', numbers)
+
+      const firstNumberShift = numbers.shift();
+      console.log('firstNumberShift', firstNumberShift, 'numbers', numbers)
+
+    }
+
+    function destructWithSpread() {
+      const numbers = [1, 2, 3, 4, 5];
+
+      const [a, ...exemploComResto] = numbers;
+      console.log('a', a, 'exemploComResto', exemploComResto);
+    }
+
+    function destructWithDefaultValue() {
+      const colors = ['red', 'yellow', 'blue'];
+      const [blue = 'blue', yellow = 'yellow', red = 'red'] = colors;
+      console.log(blue, yellow, red)
+    }
+
+    function destructObject() {
+      const myObj = {
+        name: 'Bruno',
+        lastName: 'Hirata',
+        age: 120,
+      };
+
+      const { name, lastName } = myObj;
+      console.log('name', myObj.name, name, 'lastName', myObj.lastName, lastName)
+    }
+
+    function destructObjectWithNonExistingProperty() {
+      const myObj = {
+        name: 'Bruno',
+        lastName: 'Hirata',
+        age: 120,
+      };
+      const { name, lastName, propQueNaoExiste } = myObj;
+
+      console.log('name', myObj.name, name, 'lastName', myObj.lastName, lastName)
+      console.log('propQueNaoExiste', propQueNaoExiste)
+    }
+
+    function destructObjectWithDefaultValue() {
+      const myObj = {
+        name: 'Bruno',
+        lastName: 'Hirata',
+        age: 120,
+        propQueNaoExiste: 'Existe sim'
+      };
+
+      const { name, lastName, propQueNaoExiste = 'Nao Existe' } = myObj;
+      console.log('name', myObj.name, name, 'lastName', myObj.lastName, lastName)
+      console.log('propQueNaoExiste', propQueNaoExiste)
+    }
+
+    function destructFromFunction() {
+      function fn() {
+        return [1, 2];
+      }
+
+      const [a, b] = fn();
+      console.log('a', a, 'b', b)
+    }
+
+    function destructObjetFromFunction() {
+      function fn() {
+        return {
+          name: 'Bruno',
+          lastName: 'Hirata',
+          age: 120,
+        };
+      }
+
+      const { name, lastName } = fn();
+      console.log('name', name, 'lastName', lastName);
+    }
+
+    function destructObjetChangePropertyNameFromFunction() {
+      function fn() {
+        return {
+          name: 'Bruno',
+          lastName: 'Hirata',
+          age: 120,
+        };
+      }
+
+      const { name: firstName, lastName } = fn();
+      console.log('name', name, 'firstName', firstName, 'lastName', lastName);
+    }
+
+    function destructNestedObject() {
+      const myObj = {
+        name: {
+          firstName: 'Bruno',
+          lastName: 'Hirata',
+        },
+        age: 120,
+      };
+
+      const { name: { firstName, lastName } } = myObj;
+      console.log('name', name, firstName, lastName)
+    }
+
+    function destructObjectFromParameters() {
+      function fn({
+        firstName,
+        lastName,
+        age,
+      }) {
+        console.log('parameter', firstName, lastName, age,)
+      }
+
+      fn({
+        firstName: 'Bruno',
+        lastName: 'Hirata',
+        age: 120,
+        maisUm: 'mais um'
+      })
+      fn({ firstName: 'First', lastName: 'Last', age: 123 })
+    }
+    destructObjectFromParameters();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short Circuit</title>
+</head>
+<body>
+  
+  <script>
+    const a = null;
+    const b = 2;
+    const c = 3;
+
+    const or = a || (b * c);
+    // let or;
+    // if (a) {
+    //   or = a;
+    // } else {
+    //   or = b * c
+    // }
+    console.log('or', or);
+
+    const and = a && (b * c);
+    console.log('and', and);
+
+    const nullish = a ?? (b * c);
+    console.log('nullish', nullish);
+
+    const obj = {
+      a: {
+        // b: 123
+      },
+      x: {
+        b: 987
+      }
+    }
+    console.log('obj', obj.x?.b);
+
+    const age = obj.a?.b ?? 0
+    console.log('simples ' + JSON.stringify(obj), "duplas " + JSON.stringify(obj))
+    console.log(`backtick ${age} ${JSON.stringify(obj)}`);
+  </script>
+</body>
+</html>

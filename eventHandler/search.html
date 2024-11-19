@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+
+  <style>
+    #search-term {
+      width: 80%;
+      padding: 0.5em;
+      border: 1px solid rgb(6, 6, 212)
+    }
+
+    #countries {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #countries li {
+      padding: 0.5em;
+      margin: 0.1em;
+      width: 80%;
+      border: 1px solid rgb(6, 6, 212);
+      background-color: #759FBC;
+    }
+
+    #countries li:hover {
+      background-color: #1F5673;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Countries</h1>
+    <input id="search-term" name="search-term" type="text" placeholder="Search country..." />
+
+    <ul id="countries"></ul>
+  </div>
+
+  <script>
+    const COUNTRIES = [
+      "Germany",
+      "Poland",
+      "United States of America",
+      "Romania",
+      "Italy",
+      "Portugal",
+    ];
+
+    window.addEventListener('load', () => {
+      COUNTRIES.forEach(createCountryElement);
+    });
+
+    function createCountryElement(countryName) {
+      const li = document.createElement("li");
+      li.innerText = countryName;
+
+      document.getElementById("countries").appendChild(li)
+    }
+    
+    function searchCountry() {
+      const searchTerm = document.getElementById("search-term").value;
+
+      while (document.getElementById("countries").children.length > 0) {
+        document.getElementById("countries").removeChild(
+          document.getElementById("countries").children[0]
+        )
+      }
+
+      COUNTRIES
+      .filter((countryName) => {
+        return countryName.toLowerCase().includes(searchTerm.toLowerCase())
+      })
+      .forEach(createCountryElement);
+    }
+    document.getElementById("search-term").addEventListener('keyup', searchCountry)
+  </script>
+</body>
+
+</html>

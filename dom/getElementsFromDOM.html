@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Title</title>
+</head>
+<body>
+  <h1>DOM</h1>
+  <p>Pegar os valores dos elementos no DOM</p>
+
+  <p id="put-values-here"></p>
+
+  <p class="get-by-class-name"></p>
+  <p class="get-by-class-name"></p>
+  <p class="get-by-class-name"></p>
+  <p class="get-by-class-name"></p>
+
+  <input type="text" name="name" value="name" />
+  <input type="text" name="last-name" value="last name" />
+  <input type="text" name="age" value="age" />
+
+  <script>
+    const title = document.title;
+    document.title = 'Mudei o title';
+    console.log(title);
+
+    console.log(document.body);
+
+    console.log(document.URL);
+
+    document.getElementById("put-values-here").innerText = 'getElementById';
+
+    const [fromClass] = document.getElementsByClassName("get-by-class-name");
+    fromClass.innerText = 'getElementsByClassName';
+
+    const elementsFromClassName = document.getElementsByClassName("get-by-class-name");
+    for (let i = 0 ; i < elementsFromClassName.length ; i++) {
+      elementsFromClassName[i].innerText = 'getElementsByClassName for'
+    }
+
+    const inputs = document.getElementsByTagName('input')
+    for (let i = 0 ; i < inputs.length ; i++) {
+      console.log('name: ', inputs[i].name,'value: ', inputs[i].value)
+    }
+    
+  </script>
+</body>
+</html>

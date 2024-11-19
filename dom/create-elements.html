@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Elements</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    function createParagraph(text) {
+      const p = document.createElement("p");
+      p.innerText = text.text;
+      p.className = text.class || "";
+
+      return p;
+    }
+
+    const texts = [
+      {
+        text: "Oi oi",
+        class: "className"
+      },
+      {
+        text: "Hej",
+      },
+      {
+        text: "Hi",
+      },
+      {
+        text: "TechOf",
+      },
+      {
+        text: "Mais alguma coisa",
+      },
+      {
+        text: "Lisboa",
+      },
+    ];
+
+    texts
+      .map(createParagraph)
+      .forEach(element => document.body.appendChild(element))
+  </script>
+</body>
+
+</html>

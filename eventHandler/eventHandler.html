@@ -1,0 +1,65 @@
+<html>
+
+<body>
+  <h1 id="title">Please add friends 💕</h1>
+  <input type="text" id="friend" placeholder="add friend" value="">
+  <button id="addFriend">Add friend</button>
+  <button id="removeFriend">Remove Friend</button>
+  <ul id="myFriends"></ul>
+</body>
+<script>
+  // window.addEventListener('load', function () {
+  //   alert("On Load")
+  // });
+
+  document.getElementById("addFriend").addEventListener('click', addFriend);
+  document.getElementById("removeFriend").addEventListener('click', removeFriend);
+
+  document.getElementById("addFriend").addEventListener('focus', gotFocus);
+  document.getElementById("addFriend").addEventListener('blur', gotFocus);
+
+  document.getElementById("title").addEventListener("mouseleave", (event) => {
+    event.target.style.background = "";
+  });
+  document.getElementById("title").addEventListener("mouseenter", (event) => {
+    event.target.style.background = "pink";
+  });
+
+  function gotFocus() {
+    console.log(event)
+  }
+
+  function addFriend() {
+    const friendName = document.getElementById("friend").value;
+
+    const friend = document.createElement("li");
+    friend.innerText = friendName;
+
+    friend.addEventListener('click', function () {
+      friend.parentNode.removeChild(friend)
+    })
+
+    document.getElementById("myFriends").appendChild(friend)
+
+    document.getElementById("friend").value = "";
+  }
+
+  function removeFriend() {
+    const friendName = document.getElementById("friend").value;
+    document.getElementById("friend").value = "";
+
+    const friends = document.getElementById("myFriends").children
+
+    for (let i = 0; i < friends.length; i++) {
+      const name = friends[i].innerText;
+      console.log('name', name)
+
+      if (name === friendName) {
+        friends[i].parentNode.removeChild(friends[i]);
+      }
+    }
+
+  }
+</script>
+
+</html>

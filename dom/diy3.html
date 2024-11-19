@@ -1,0 +1,44 @@
+<html>
+
+<body>
+  <h1>Please add friends 💕</p>
+    <input type="text" id="friend" placeholder="add friend">
+    <button onclick="addFriend()">Add friend</button>
+    <button onclick="removeNames()">Remove Name</button>
+    <ul id="myFriends"></ul>
+</body>
+<script>
+  function addFriend() {
+    const friendName = document.getElementById("friend").value;
+
+    const friend = document.createElement("li");
+    friend.innerText = friendName;
+
+    friend.onclick = function () {
+      friend.parentNode.removeChild(friend)
+    }
+
+    document.getElementById("myFriends").appendChild(friend)
+
+    document.getElementById("friend").value = "";
+  }
+
+  function removeNames() {
+    const friendName = document.getElementById("friend").value;
+    document.getElementById("friend").value = "";
+
+    const friends = document.getElementById("myFriends").children
+
+    for (let i = 0; i < friends.length; i++) {
+      const name = friends[i].innerText;
+      console.log('name', name)
+      
+      if (name === friendName) {
+        friends[i].parentNode.removeChild(friends[i]);
+      }
+    }
+
+  }
+</script>
+
+</html>

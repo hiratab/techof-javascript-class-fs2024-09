@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hat Game</title>
+
+  <style>
+    .container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .content-container {
+      padding: 1em;
+    }
+
+    #play-again-button {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>With wich letter does it start?</h1>
+  </div>
+
+  <div>
+    <h2 id="question-number"></h2>
+  </div>
+
+  <div class="container">
+    <div class="image-to-guess-container">
+      <img id="image-to-guess" />
+    </div>
+
+    <div class="content-container">
+      <div class="answer-container">
+        <input type="text" id="answer" placeholder="Starts with..." />
+        <button id="play-button">Play</button>
+      </div>
+
+      <div class="score-container">
+        <p id="result"></p>
+        <p id="score">Score: 0</p>
+        <p id="high-score">High Score: 0</p>
+      </div>
+
+      <div class="play-again-button-container">
+        <button id="play-again-button">Game over. Let's play again.</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/images.js"></script>
+  <script>
+    let questionNumber = 0;
+    let score = 0;
+    let highScore;
+
+    const generateRandomNumber = () => {
+      return Math.floor(Math.random() * IMAGES.length);
+    }
+    let randomNumber = generateRandomNumber();
+
+    const getNextQuestion = (randomNumber) => {
+      const setImage = () => {
+        document.getElementById("image-to-guess").src = IMAGES[randomNumber].image;
+      }
+      setImage();
+    }
+
+    const updateQuestionNumber = () => {
+      questionNumber = questionNumber + 1;
+      document.getElementById("question-number").innerText = `Question number: ${questionNumber}`;
+    }
+
+    const validateAnswer = (randomNumber) => {
+      const answer = document.getElementById("answer").value;
+
+      if (answer.toLowerCase() === IMAGES[randomNumber].answer.toLowerCase()) {
+        score = score + 5;
+        return;
+      }
+
+      score = score - 5;
+      return;
+    }
+
+    const updateScore = () => {
+      document.getElementById("score").innerText = `Score: ${score}`;
+    }
+
+    const updateHighScore = () => {
+      document.getElementById("high-score").innerText = `High Score: ${highScore ?? 0}`;
+    }
+
+    const validateGameFinished = () => {
+      if (questionNumber >= 3) {
+        document.getElementById('play-button').disabled = true;
+        document.getElementById('play-button').style.display = 'none';
+        document.getElementById('play-again-button').style.display = 'block';
+
+        return true;
+      }
+
+      return false;
+    }
+
+    const resetGame = () => {
+      questionNumber = 0;
+      score = 0;
+      updateScore();
+
+      document.getElementById('play-button').disabled = false;
+      document.getElementById('play-button').style.display = 'block';
+      document.getElementById('play-again-button').style.display = 'none';
+
+      randomNumber = generateRandomNumber();
+      getNextQuestion(randomNumber);
+      updateQuestionNumber();
+    }
+
+    const clearInputValue = () => {
+      document.getElementById("answer").value = '';
+    }
+
+    function handlePlayButtonClick() {
+      validateAnswer(randomNumber);
+      updateScore();
+      
+      if (validateGameFinished()) {
+        document.getElementById('play-button').disabled = true;
+        document.getElementById('play-button').style.display = 'none';
+        document.getElementById('play-again-button').style.display = 'block';
+        
+        if (!highScore || score > highScore) {
+          highScore = score;
+        }
+        updateHighScore();
+        clearInputValue();
+
+        return;
+      }
+
+      randomNumber = generateRandomNumber();
+      getNextQuestion(randomNumber);
+      updateQuestionNumber();
+      clearInputValue();
+    }
+    document.getElementById('play-button')
+      .addEventListener('click', handlePlayButtonClick);
+
+    document.getElementById('play-again-button')
+      .addEventListener('click', resetGame);
+
+    window.onload = () => {
+      getNextQuestion(randomNumber);
+      updateQuestionNumber();
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number</title>
+
+  <style>
+    .square {
+      border: 1px solid rgb(0, 0, 199);
+    }
+
+    .square-size-container {
+      padding-bottom: 1em;
+    }
+
+    .buttons-container {
+      padding-bottom: 1em;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .buttons-container button {
+      margin: 0.2em;
+    }
+  </style>
+</head>
+<body>
+  <p id="is-equal"></p>
+
+  <div class="square-size-container">
+    <input id="square-size" name="square-size" type="number" />
+  </div>
+  <div class="buttons-container">
+    <button onclick="enlargeSquareSize()">Aumentar</button>
+    <button onclick="shrinkSquareSize()">Reduzir</button>
+  </div>
+  <div class="square" style="width: 100px; height: 100px;"></div>
+
+  <script>
+    document.getElementById("square-size").value = 100;
+
+    function setSquareSize(size) {
+      const [square] = document.getElementsByClassName("square");
+      square.style.width = `${size}px`;
+      square.style.height = `${size}px`;
+    }
+
+    function updateSquareSize() {
+      const newSize = document.getElementById("square-size").value;
+
+      setSquareSize(newSize);
+    }
+    document.getElementById("square-size").addEventListener("change", updateSquareSize);
+
+
+    function enlargeSquareSize() {
+      const currentSize = document.getElementById("square-size");
+      currentSize.value = parseInt(currentSize.value) + 10;
+
+      setSquareSize(currentSize.value);
+    }
+
+    function shrinkSquareSize() {
+      const [square] = document.getElementsByClassName("square");
+      const currentSize = parseInt(square.style.width);
+      const newSize = currentSize - 10;
+    
+      setSquareSize(newSize);
+    }
+  </script>
+</body>
+</html>

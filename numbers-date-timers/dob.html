@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOB</title>
+</head>
+
+<body>
+  <h1>Data de Nascimento</h1>
+  <p id="result"></p>
+
+  <input id="dob-date" type="datetime-local" placeholder="Sua data de nascimento" value="2024-11-26T12:30"/>
+  <button onclick="validateDobDate()">Validar data de nascimento</button>
+
+  <script>
+    function validateDob() {
+      const dob = document.getElementById("dob-date").value; // 2024-11-26
+
+      const [year, month, day] = dob.split('-');
+
+      document.getElementById("result").innerText = `Year: ${year} Month: ${month} Day: ${day}`;
+    }
+
+    function validateDobDate() {
+      const dob = new Date(document.getElementById("dob-date").value);
+
+      dob.setTime(-187657);
+
+      const resultText = [
+        `Date: ${dob}`,
+        `ISO: ${dob.toISOString()}`,
+        `Timestamp: ${dob.getTime()}`,
+        `Year: ${dob.getFullYear()}`,
+        `Month: ${dob.getMonth()}`,
+        `Date: ${dob.getDate()}`,
+        `Day: ${dob.getDay()}`,
+        `Hour: ${dob.getHours()}`,
+        `Minutes: ${dob.getMinutes()}`,
+        `Seconds: ${dob.getSeconds()}`
+      ];
+
+      document.getElementById("result").innerText = resultText.join('\n\n');
+    }
+  </script>
+</body>
+
+</html>

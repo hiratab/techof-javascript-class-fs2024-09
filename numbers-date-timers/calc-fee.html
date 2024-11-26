@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculate Fee</title>
+</head>
+<body>
+  <h1>Calculadora de Taxa</h1>
+
+  <p id="percentage-fee"></p>
+  <p id="total-amount"></p>
+  <p id="error"></p>
+
+  <label for="amount">Amount</label>
+  <input id="amount" name="amount" type="number" value="0" />
+
+  <br>
+  <label for="fee">Fee</label>
+  <input id="fee" name="fee" type="number" value="0"/>
+
+  <script>
+    document.getElementById("amount").addEventListener('change', (event) => {
+      const fee = document.getElementById('fee').value;
+
+      if (!isFinite(parseInt(fee) / parseInt(event.target.value))) {
+        document.getElementById('error').innerText = 'Amount or fee are invalid.'
+        return;
+      }
+
+      document.getElementById('percentage-fee')
+        .innerText = Math.floor(parseInt(fee) / parseInt(event.target.value)) + '%';
+    });
+
+    document.getElementById("fee").addEventListener('change', (event) => {
+      const amount = document.getElementById('amount').value;
+
+      if (!isFinite(parseInt(event.target.value) / parseInt(amount))) {
+        document.getElementById('error').innerText = 'Amount or fee are invalid.'
+        return;
+      }
+
+      document.getElementById('percentage-fee')
+        .innerText = (parseInt(event.target.value) / parseInt(amount)).toFixed(2) + '%';
+    })
+  </script>
+</body>
+</html>

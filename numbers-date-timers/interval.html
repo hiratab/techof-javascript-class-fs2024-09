@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timers</title>
+
+  <style>
+    #timeout {}
+  </style>
+</head>
+
+<body>
+  <h1>Timers</h1>
+
+  <p id="time-now">Press play to get the current date</p>
+  <button onclick="start()">Start</button>
+  <button onclick="pause()">Pause</button>
+
+  <p id="timeout">Hello from timeout</p>
+
+  <script>
+    let interval;
+    let intervalText;
+
+    function updateTimeNow() {
+      const now = new Date();
+      const date = `${now.getDate()}-${now.getMonth() + 1}-${now.getFullYear()}`;
+      const time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+
+      document.getElementById("time-now")
+        .innerText =
+        `Time Now: ${date} ${time}`;
+    }
+
+    function start() {
+      updateTimeNow();
+      clearInterval(interval);
+      clearInterval(intervalText);
+      interval = setInterval(updateTimeNow, 1000);
+
+      intervalText = setInterval(() => {
+        document.getElementById("timeout").innerText =
+          document.getElementById("timeout").innerText
+          + '-';
+      }, 3000);
+    }
+
+    function pause() {
+      clearInterval(interval);
+      clearInterval(intervalText);
+    }
+
+  </script>
+</body>
+
+</html>

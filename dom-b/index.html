@@ -19,6 +19,30 @@
     #play-again-button {
       display: none;
     }
+
+    .invisible {
+      display: none;
+    }
+
+    .visibile {
+      display: block;
+    }
+
+    .tooltip {
+      border: 1px solid green;
+      background-color: rgba(217, 217, 217, 1);
+      padding: 1em;
+      position: absolute;
+      top: 1em;
+    }
+
+    .tooltip-container {
+      position: relative;
+    }
+
+    .red-background {
+      background-color: red;
+    }
   </style>
 </head>
 
@@ -45,7 +69,13 @@
       <div class="score-container">
         <p id="result"></p>
         <p id="score">Score: 0</p>
-        <p id="high-score">High Score: 0</p>
+
+        <div class="tooltip-container">
+          <p id="high-score">High Score: 0</p>
+          <div class="tooltip invisible" id="high-score-tooltip">
+            <p>O high score</p>
+          </div>
+        </div>
       </div>
 
       <div class="play-again-button-container">
@@ -97,20 +127,11 @@
       document.getElementById("high-score").innerText = `High Score: ${highScore ?? 0}`;
     }
 
-    const hideAndDisableButton = (buttonId) => {
-      document.getElementById(buttonId).disabled = true;
-      document.getElementById(buttonId).style.display = 'none';
-    }
-
-    const showAndEnableButton = (buttonId) => {
-      document.getElementById(buttonId).disabled = false;
-      document.getElementById(buttonId).style.display = 'block';
-    }
-
     const validateGameFinished = () => {
       if (questionNumber >= 3) {
-        hideAndDisableButton('play-button');
-        showAndEnableButton('play-again-button')
+        document.getElementById('play-button').disabled = true;
+        document.getElementById('play-button').style.display = 'none';
+        document.getElementById('play-again-button').style.display = 'block';
 
         return true;
       }
@@ -123,8 +144,9 @@
       score = 0;
       updateScore();
 
-      showAndEnableButton('play-button');
-      hideAndDisableButton('play-again-button')
+      document.getElementById('play-button').removeAttribute('disabled')
+      document.getElementById('play-button').style.display = 'block';
+      document.getElementById('play-again-button').style.display = 'none';
 
       randomNumber = generateRandomNumber();
       getNextQuestion(randomNumber);
@@ -140,7 +162,7 @@
       updateScore();
 
       if (validateGameFinished()) {
-        document.getElementById('play-button').disabled = true;
+        document.getElementById('play-button').setAttribute("disabled", "true")
         document.getElementById('play-button').style.display = 'none';
         document.getElementById('play-again-button').style.display = 'block';
 
@@ -158,23 +180,56 @@
       updateQuestionNumber();
       clearInputValue();
     }
-
     document.getElementById('play-button')
       .addEventListener('click', handlePlayButtonClick);
 
     document.getElementById('play-again-button')
       .addEventListener('click', resetGame);
 
-    document.getElementById('question-number')
-      .addEventListener('mouseenter', () => {
-        console.log('Mouse enter')
-      });
-
     window.onload = () => {
       getNextQuestion(randomNumber);
       updateQuestionNumber();
     }
 
+    document.getElementById('high-score')
+      .addEventListener('mouseenter', () => {
+
+        document.getElementById("high-score-tooltip")
+          .classList
+          .remove("invisible")
+      });
+
+    document.getElementById('high-score')
+      .addEventListener('mouseleave', () => {
+
+        document.getElementById("high-score-tooltip")
+          .classList
+          .add("invisible")
+      });
+
+    document.getElementById('image-to-guess')
+      .addEventListener('mouseenter', () => {
+        console.log('Mouse enter image-to-guess')
+      });
+
+
+    const addClassToTarget = (event, className) => {
+      event.target.classList.add(className);
+    }
+
+    const removeClassFromTarget = (event, className) => {
+      event.target.classList.remove(className);
+    }
+
+    document.getElementById("score")
+      .addEventListener('mouseenter', (event) => {
+        return addClassToTarget(event, "red-background");
+      });
+
+    document.getElementById("score")
+      .addEventListener('mouseleave', (event) => {
+        return removeClassFromTarget(event, "red-background")
+      });
   </script>
 </body>
 

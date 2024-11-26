@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Gallery</title>
+
+  <style>
+    .box {
+      border: 1px solid green;
+      padding: 1em;
+      margin: 0.5em;
+      background-color: rgba(217, 217, 217, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box0" class="box">
+    <div>
+      <h2>0</h2>
+    </div>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+    <img src="images/ball.png" width="80px" />
+    <button id="btn0" onclick="scrollNext(4)">Next</button>
+  </div>
+
+  <div id="box1" class="box">
+    <div>
+      <h2>1</h2>
+    </div>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+    <img src="images/boat.png" width="80px" />
+    <button id="btn1" onclick="scrollTo(4)">Next</button>
+  </div>
+
+  <div id="box2" class="box">
+    <div>
+      <h2>2</h2>
+    </div>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+    <img src="images/hat.png" width="80px" />
+    <button id="btn2">Next</button>
+  </div>
+
+  <div id="box3" class="box">
+    <div>
+      <h2>3</h2>
+    </div>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+    <img src="images/smily.png" width="80px" />
+    <button id="btn3">Next</button>
+  </div>
+
+  <div id="box4" class="box">
+    <div>
+      <h2>4</h2>
+    </div>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+    <img src="images/star.png" width="80px" />
+    <button id="btn4">Next</button>
+    <button id="btn4" class="btnNext" onclick="scrollNext(0)">Top</button>
+
+  </div>
+
+  <script>
+    function scrollTo(destination) {
+      let box = document.getElementById(`box${destination}`);
+      box.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    function scrollNext(i) {
+      console.log(i)
+      let box = document.getElementById("box" + i)
+      box.scrollIntoView({ behavior: "smooth" })
+    }
+  </script>
+</body>
+
+</html>

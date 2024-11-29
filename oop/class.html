@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class</title>
+</head>
+
+<body>
+
+  <script>
+    class Person {
+      constructor(name, lastName, age, interests) {
+        this._name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.interests = interests;
+      }
+
+      greeting = () => {
+        console.log(`Hi! I'm ${this._name} ${this.lastName}`)
+      }
+
+      getFullName = () => {
+        return `${this._name} ${this.lastName}`;
+      }
+
+      get name() {
+        return `Name dentro do get ${this._name}`;
+      }
+
+      set name(newName) {
+        this._name = newName
+      }
+    }
+
+    class Teacher extends Person {
+      constructor(name, lastName, age, interests, subjects) {
+        super(name, lastName, age, interests);
+        this.subjects = subjects;
+      }
+    }
+
+    const bruno = new Person('Bruno', 'Hirata', 99, ['coding']);
+    // bruno.greeting();
+    // console.log(bruno.getFullName());
+
+    const teacher = new Teacher('Bruno',
+      'Hirata',
+      99,
+      ['coding'],
+      [
+        'Web Developer',
+        'Front-end developer',
+        'Back-end developer',
+        'Full-stack developer'
+      ]
+    )
+    console.log(teacher.name)
+    teacher.greeting()
+    console.log(teacher.getFullName())
+  </script>
+</body>
+
+</html>

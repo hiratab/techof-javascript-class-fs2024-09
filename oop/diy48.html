@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIY 48</title>
+</head>
+
+<body>
+  <script>
+    class Shape {
+      constructor(width, height) {
+        this._width = width;
+        this.height = height;
+      }
+
+      get width() {
+        return this._width;
+      }
+
+      set width(newWidth) {
+        this._width = newWidth;
+      }
+    }
+
+    class Rectangle extends Shape {
+      constructor(width, height, color) {
+        super(width, height);
+        this.color = color;
+      }
+
+      calculateArea() {
+        return this._width * this.height;
+      }
+    }
+
+    const rectangle = new Rectangle(300, 300);
+    console.log(rectangle.calculateArea())
+  </script>
+</body>
+
+</html>

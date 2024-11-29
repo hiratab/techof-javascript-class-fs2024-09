@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle</title>
+</head>
+
+<body>
+  <script>
+    function Vehicle(wheels, color, capacity, doors, fuel) {
+      this.wheels = wheels;
+      this.color = color;
+      this.capacity = capacity;
+      this.doors = doors;
+      this.fuel = fuel;
+    }
+
+    function Car(color, capacity, doors) {
+      Vehicle.call(this, 4, color, capacity, doors, 'gas');
+    }
+
+    function Bus(color, capacity, doors) {
+      Vehicle.call(this, 4, color, capacity, doors, 'diesel');
+    }
+
+    function Motocycle(color) {
+      Vehicle.call(this, 2, color, 2, 0, 'gas');
+    }
+
+    const vespa = new Motocycle('red');
+    const scooter = new Motocycle('green');
+  </script>
+</body>
+
+</html>

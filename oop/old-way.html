@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Old Way</title>
+</head>
+
+<body>
+
+  <script>
+    function createNewPerson(name, lastName, age) {
+      return {
+        name,
+        lastName,
+        age,
+        greeting: () => {
+          console.log(`Hi! I'm ${name} ${lastName}`)
+        }
+      };
+    }
+
+
+    const bruno = createNewPerson('Bruno', 'Hirata', 99,);
+    bruno.greeting();
+    console.log('Idade do Bruno', bruno.age)
+
+    const maria = createNewPerson('Maria', 'Marianes', 1,);
+    maria.greeting();
+
+    const bruna = createNewPerson('Bruna', 'Bruni', 6)
+    bruna.greeting();
+  </script>
+</body>
+
+</html>

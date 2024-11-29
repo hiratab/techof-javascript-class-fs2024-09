@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constructor</title>
+</head>
+
+<body>
+
+  <script>
+    function Person(name, lastName, age, interests) {
+      this.name = name;
+      this.lastName = lastName;
+      this.age = age;
+      this.interests = interests;
+
+      this.greeting = () => {
+        console.log(`Hi! I'm ${name} ${lastName}`)
+      }
+
+      this.getFullName = () => {
+        return `${name} ${lastName}`;
+      }
+    }
+
+    function Student(name, lastName, age, courseName) {
+      Person.call(this, name, lastName, age);
+      this.courseName = courseName;
+    }
+
+    const tiago = new Student('Tiago', 'Tiago', 99, 'Full-stack');
+    console.log(tiago)
+
+    function Teacher(name, lastName, age, subjects) {
+      Person.call(this, name, lastName, age);
+      this.subjects = subjects;
+    }
+    const teacher = new Teacher('Bruno', 'Hirata', 99, ['Web Developer', 'Front-end developer', 'Back-end developer', 'Full-stack developer'])
+    console.log(teacher);
+
+    const bruno = new Person('Bruno', 'Hirata', 99,);
+    console.log('bruno', bruno)
+    bruno.greeting();
+    console.log('Idade do Bruno', bruno.age)
+
+    const maria = new Person('Maria', 'Marianes', 1,);
+    maria.greeting();
+
+    const bruna = new Person('Bruna', 'Bruni', 6)
+    bruna.greeting();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asynchronous Javascript</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+
+  <script>
+    function sum() {
+      const a = 10;
+      const b = 90;
+      const sumResult = document.createElement("p");
+      sumResult.innerText = a + b;
+      document.getElementById("root").appendChild(sumResult);
+    }
+
+    function createP() {
+      const p = document.createElement("p");
+      p.innerText = "Criei um elemento p";
+
+      document.getElementById("root").appendChild(p);
+    }
+
+    setTimeout(sum, 1000);
+    setTimeout(createP, 2000);
+    sum();
+    createP();
+  </script>
+</body>
+
+</html>

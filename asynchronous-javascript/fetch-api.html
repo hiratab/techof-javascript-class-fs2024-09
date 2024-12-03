@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch-api</title>
+
+  <style>
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px dotted #000;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      animation: rotation 2s linear infinite;
+      display: none;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error {
+      border: 0.1em solid red;
+      display: none;
+      flex-direction: row;
+    }
+
+    .error img {
+      width: 2em;
+      height: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <input id="country-name" type="text">
+  </div>
+  <span class="loader"></span>
+  <div class="error">
+    <img
+      src="https://raw.githubusercontent.com/hiratab/techof-javascript-class-fs2024-09/refs/heads/main/asynchronous-javascript/images/error.svg" />
+    <p id="error-message"></p>
+  </div>
+  <div id="country">
+    <p id="name"></p>
+    <p id="official-name"></p>
+  </div>
+
+  <script>
+    function showLoading() {
+      document.getElementsByClassName("loader")[0].style.display = 'block';
+    }
+
+    function hideLoading() {
+      document.getElementsByClassName("loader")[0].style.display = 'none';
+    }
+
+    function showError(error) {
+      document.getElementById("error-message").innerText = error;
+      document.getElementsByClassName("error")[0].style.display = 'flex';
+    }
+
+    function hideError() {
+      document.getElementsByClassName("error")[0].style.display = '';
+      document.getElementsByClassName("error")[0].style.display = 'none';
+    }
+
+    function clearCountry() {
+      document.getElementById("name").innerText = '';
+      document.getElementById("official-name").innerText = '';
+    }
+
+    function getCountry(countryName) {
+      fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+        .then(response => response.json())
+        .then(([response]) => {
+          document.getElementById("name").innerText = response.name?.common;
+          document.getElementById("official-name").innerText = response.name?.official;
+        })
+        .catch(error => {
+          showError(error);
+        })
+        .finally(() => {
+          hideLoading();
+        });
+    }
+
+    let timeout;
+    document.getElementById("country-name").addEventListener(
+      'keyup',
+      (event) => {
+        const countryName = event.target.value;
+
+        showLoading();
+        hideError();
+        clearCountry();
+        timeout = setTimeout(() => {
+          getCountry(countryName);
+        }, 500);
+      }
+    );
+
+    document.getElementById("country-name").addEventListener(
+      'keydown',
+      () => {
+        clearTimeout(timeout);
+      }
+    )
+
+  </script>
+</body>
+
+</html>

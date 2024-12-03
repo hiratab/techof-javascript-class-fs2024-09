@@ -45,7 +45,7 @@
   <span class="loader"></span>
   <div id="country">
     <div class="error">
-      <img src="images/error.svg" />
+      <img src="https://raw.githubusercontent.com/hiratab/techof-javascript-class-fs2024-09/refs/heads/main/asynchronous-javascript/images/error.svg" />
       <p id="error-message"></p>
     </div>
     <p id="name"></p>
@@ -56,23 +56,23 @@
     function mockRestCountries() {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve(
-            [
-              {
-                "name": {
-                  "common": "Portugal",
-                  "official": "Portuguese Republic",
-                  "nativeName": {
-                    "por": {
-                      "official": "República português",
-                      "common": "Portugal"
-                    }
-                  }
-                }
-              }
-            ]
-          )
-          // reject("Country not found");
+        //   resolve(
+        //     [
+        //       {
+        //         "name": {
+        //           "common": "Portugal",
+        //           "official": "Portuguese Republic",
+        //           "nativeName": {
+        //             "por": {
+        //               "official": "República português",
+        //               "common": "Portugal"
+        //             }
+        //           }
+        //         }
+        //       }
+        //     ]
+        //   )
+          reject("Country not found");
         }, 3000);
       });
     }

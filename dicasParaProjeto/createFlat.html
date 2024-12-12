@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form</title>
+</head>
+
+
+<body>
+  <div id="header"></div>
+  <div id="form"></div>
+
+  <script src="./header.js"></script>
+  <script src="./form.js"></script>
+  <script>
+    const INPUTS = [
+      {
+        type: "text",
+        id: "email",
+        placeholder: "Email"
+      },
+      {
+        type: "password",
+        id: "password",
+        placeholder: "Password"
+      },
+      {
+        type: "city",
+        id: "city",
+        placeholder: "City",
+        validation: (value) => {
+          return value.length > 10;
+        },
+        errorMessage: "City is required"
+      }
+    ];
+
+    const BUTTONS = [
+      {
+        id: "login",
+        onclick: () => {
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+
+          // Pegar o usuario com o email
+          // Validar a senha
+
+          alert('Login successful');
+          localStorage.setItem('user', email);
+          window.location.href = './createUser.html';
+        },
+        label: "Login"
+      }
+    ];
+    document.addEventListener("onload", buildForm("form", INPUTS, BUTTONS));
+  </script>
+</body>
+
+</html>

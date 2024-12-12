@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Navigation</title>
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <style>
+      .flat {
+        display: flex;
+        flex-direction: row;
+        background-color: bisque;
+      }
+      .info {
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="objects"></div>
+
+    <script src="./header.js"></script>
+    <script>
+      function createObjects() {
+        const users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+
+        users.forEach(user => {
+          const flat = document.createElement('div');
+          flat.classList.add('flat');
+          
+          const imageContainer = document.createElement('div');
+          const image = document.createElement('img');
+          image.src = 'https://via.placeholder.com/150';
+          imageContainer.appendChild(image);
+          flat.appendChild(imageContainer);
+
+          const infoContainer = document.createElement('div');
+          infoContainer.classList.add('info');
+          const firstName = document.createElement('p');
+          firstName.textContent = user.firstName;
+          infoContainer.appendChild(firstName);
+          const lastName = document.createElement('p');
+          lastName.textContent = user.lastName;
+          infoContainer.appendChild(lastName);
+          const email = document.createElement('p');
+          email.textContent = user.email;
+          infoContainer.appendChild(email);
+          flat.appendChild(infoContainer);
+
+          document.getElementById('objects').appendChild(flat);
+        });
+      }
+
+      document.addEventListener("onload", createObjects());
+
+    </script>
+  </body>
+</html>

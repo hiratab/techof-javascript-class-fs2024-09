@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form</title>
+</head>
+
+
+<body>
+  <div id="header"></div>
+  <div id="form"></div>
+
+  <script src="./header.js"></script>
+  <script src="./form.js"></script>
+  <script>
+    const INPUTS = [
+      {
+        type: "text",
+        id: "first-name",
+        placeholder: "First Name"
+      },
+      {
+        type: "text",
+        id: "last-name",
+        placeholder: "Last Name"
+      },
+      {
+        type: "email",
+        id: "email",
+        placeholder: "Email"
+      },
+      {
+        type: "password",
+        id: "password",
+        placeholder: "Password"
+      }
+    ];
+
+    const BUTTONS = [
+      {
+        id: "users",
+        onclick: () => {
+          const firstName = document.getElementById('first-name').value;
+          const lastName = document.getElementById('last-name').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          console.log(firstName, lastName, email, password);
+
+          const users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+          users.push({
+            firstName,
+            lastName,
+            email,
+            password,
+          });
+
+          localStorage.setItem('users', JSON.stringify(users));
+        },
+        label: "Register"
+      },
+      {
+        id: "users",
+        onclick: () => {
+          const firstName = document.getElementById('first-name').value;
+          const lastName = document.getElementById('last-name').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          console.log(firstName, lastName, email, password);
+
+          const users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+          users.push({
+            firstName,
+            lastName,
+            email,
+            password,
+          });
+
+          localStorage.setItem('users', JSON.stringify(users));
+        },
+        label: "Outro botao"
+      },
+      {
+        id: "users",
+        onclick: () => {
+          const firstName = document.getElementById('first-name').value;
+          const lastName = document.getElementById('last-name').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          console.log(firstName, lastName, email, password);
+
+          const users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+          users.push({
+            firstName,
+            lastName,
+            email,
+            password,
+          });
+
+          localStorage.setItem('users', JSON.stringify(users));
+        },
+        label: "Mais um botao"
+      }
+    ];
+    document.addEventListener("onload", buildForm("form", INPUTS, BUTTONS));
+  </script>
+</body>
+
+</html>

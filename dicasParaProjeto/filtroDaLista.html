@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Dicas para Projeto</title>
+</head>
+
+<body>
+  <div id="header"></div>
+  
+  <input type="text" id="myInput" placeholder="Filtrar a lista" onkeyup="filterList()">
+
+  <ul id="flats">
+
+  </ul>
+  <script src="./header.js"></script>
+  <script>
+    const flats = JSON.parse(localStorage.getItem('users')) || [];
+
+    function filterList() {
+      const filter = document.getElementById('myInput').value;
+      const filteredFlats = flats.filter(flatName => flatName.includes(filter));
+      renderList(filteredFlats);
+    }
+
+    function renderList(flats = []) {
+      const flatList = document.getElementById('flats');
+      flatList.innerHTML = '';
+      flats.forEach(flatName => {
+        const newFlat = document.createElement('li');
+        newFlat.textContent = flatName.firstName;
+        flatList.appendChild(newFlat);
+      });
+    }
+
+    document.addEventListener('onload', renderList(flats));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Dicas para Projeto</title>
+</head>
+
+<body>
+  <div id="header"></div>
+  
+  <input type="text" id="myInput" placeholder="Adicionar a lista">
+  <button onclick="addToList()">Adicionar</button>
+
+  <ul id="flats">
+
+  </ul>
+  <script src="./header.js"></script>
+  <script>
+    const flats = JSON.parse(localStorage.getItem('flats')) || [];
+
+    function addToList() {
+      const flatName = document.getElementById('myInput').value;
+      flats.push(flatName);
+      localStorage.setItem('flats', JSON.stringify(flats));
+      renderList();
+    }
+
+    function renderList() {
+      const flatList = document.getElementById('flats');
+      flatList.innerHTML = '';
+      flats.forEach(flatName => {
+        const newFlat = document.createElement('li');
+        newFlat.textContent = flatName;
+        flatList.appendChild(newFlat);
+      });
+    }
+
+    document.addEventListener('onload', renderList());
+  </script>
+</body>
+
+</html>

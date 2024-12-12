@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flats</title>
+  <style>
+    .fav-icon {
+      stroke: black;
+      stroke-width: 20;
+      fill: rgba(0, 0, 0, 0);
+    }
+
+    .fav-on {
+      fill: #FF6647;
+    }
+
+    button {
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+    }
+
+    .flat-image {
+      width: 6em;
+      height: 6em;
+    }
+
+    .flat {
+      margin-bottom: 1em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #f8f7f7a7;
+    }
+
+    .flat-info {
+      flex: 2;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div id="header"></div>
+  <div id="flats"></div>
+
+  <script src="./header.js"></script>
+  <script>
+    // localStorage.setItem('user', JSON.stringify({
+    //   firstName: "firstName",
+    //   lastName: "lastName",
+    //   email: "email@domain.com",
+    //   password: "password",
+    //   birthDate: "21/03/1993",
+    //   favorites: ["1"]
+    // }))
+  </script>
+  <script src="./list.js"></script>
+  <script>
+    localStorage.setItem('flats', JSON.stringify([
+      {
+        "id": 1,
+        "name": "Lisbon City View",
+        "description": "A modern flat with a stunning city view in the heart of Lisbon.",
+        "price": 1200,
+        "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be"
+      },
+      {
+        "id": 2,
+        "name": "Porto Riverside Retreat",
+        "description": "A cozy riverside flat in the picturesque city of Porto.",
+        "price": 950,
+        "image": "https://images.unsplash.com/photo-1563729784474-851b7b6e1b8f"
+      },
+      {
+        "id": 3,
+        "name": "Algarve Beachfront Escape",
+        "description": "A luxurious flat with direct access to Algarve's sandy beaches.",
+        "price": 1500,
+        "image": "https://images.unsplash.com/photo-1501959915551-4e8a0c6cfd6e"
+      },
+      {
+        "id": 4,
+        "name": "Sintra Mountain Haven",
+        "description": "A peaceful flat surrounded by the lush mountains of Sintra.",
+        "price": 1100,
+        "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"
+      },
+      {
+        "id": 5,
+        "name": "Faro Historic Charm",
+        "description": "A charming flat located in the historic center of Faro.",
+        "price": 900,
+        "image": "https://images.unsplash.com/photo-1511395780900-7fbf1b57a2f3"
+      },
+      {
+        "id": 6,
+        "name": "Madeira Island Oasis",
+        "description": "An island getaway flat with breathtaking ocean views in Madeira.",
+        "price": 1300,
+        "image": "https://images.unsplash.com/photo-1581404927977-d8a6d3f9b3d8"
+      },
+      {
+        "id": 7,
+        "name": "Coimbra Cultural Nest",
+        "description": "A cozy flat located near the cultural landmarks of Coimbra.",
+        "price": 850,
+        "image": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c"
+      },
+      {
+        "id": 8,
+        "name": "Cascais Coastal Retreat",
+        "description": "A bright and airy flat with ocean views in Cascais.",
+        "price": 1400,
+        "image": "https://images.unsplash.com/photo-1504215680853-026ed2a45def"
+      },
+      {
+        "id": 9,
+        "name": "Evora Historic Residence",
+        "description": "A flat in the heart of Evora, surrounded by Roman ruins and history.",
+        "price": 1000,
+        "image": "https://images.unsplash.com/photo-1598300052787-df521cda45c4"
+      },
+      {
+        "id": 10,
+        "name": "Aveiro Canal View",
+        "description": "A flat with a view of the charming canals in Aveiro.",
+        "price": 950,
+        "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0"
+      }
+    ])
+    )
+  </script>
+  <script>
+    const flats = JSON.parse(localStorage.getItem('flats') ?? []);
+    const user = JSON.parse(localStorage.getItem('user') ?? {});
+
+    document.addEventListener("onload", buildList("flats", flats, user));
+  </script>
+</body>
+
+</html>
